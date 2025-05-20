@@ -18,7 +18,7 @@ Hệ thống sử dụng MySQL với 2 bảng chính:
 
 - Tìm kiếm món ăn theo **tên món** hoặc **nguyên liệu**
 - Sắp xếp kết quả theo **bảng chữ cái** hoặc **mã mới nhất**
-- Giao diện tìm kiếm sử dụng **Bootstrap** kết hợp **AJAX** để tối ưu trải nghiệm người dùng
+- Giao diện tìm kiếm sử dụng **Bootstrap** để tối ưu trải nghiệm người dùng
 - Hiển thị kết quả gồm: ảnh, tên món, nguyên liệu, liên kết xem chi tiết
 
 ## 🛠️ Công nghệ sử dụng
@@ -26,7 +26,7 @@ Hệ thống sử dụng MySQL với 2 bảng chính:
 - Backend: **Python **
 - Cơ sở dữ liệu: **MySQL (XAMPP)**
 - Frontend: **HTML**, **CSS**, **Bootstrap**
-- Tìm kiếm: **AJAX + SQL LIKE**
+- Tìm kiếm: **SQL LIKE**
 - Trình quản lý CSDL: **phpMyAdmin**
 
 ## ✅ Kết quả đạt được
@@ -45,4 +45,4 @@ Hệ thống sử dụng MySQL với 2 bảng chính:
 
 1. Clone repo:
    ```bash
-   git clone https://github.com/yourusername/ten-repo.git
+   git clone https://github.com/ttm2004/Crawl_Data.git
