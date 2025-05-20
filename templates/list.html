@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Danh sách món ăn{% endblock %}
+{% block content %}
+
+<h2 class="mb-4 text-success"><i class="fas fa-utensils me-2"></i>Danh sách món ăn</h2>
+
+<form class="row g-3 mb-3" method="get">
+  <div class="col-md-5">
+    <input type="text" class="form-control" name="keyword" placeholder="Tìm kiếm món ăn..." value="{{ keyword or '' }}">
+  </div>
+  <div class="col-md-3">
+    <select name="sort" class="form-select">
+      <option value="moi" {% if sort == 'moi' %}selected{% endif %}>Mới nhất</option>
+      <option value="az" {% if sort == 'az' %}selected{% endif %}>A → Z</option>
+      <option value="za" {% if sort == 'za' %}selected{% endif %}>Z → A</option>
+    </select>
+  </div>
+  <div class="col-md-2 d-grid">
+    <button class="btn btn-success" type="submit"><i class="fa fa-search me-1"></i> Tìm</button>
+  </div>
+  <!-- <div class="col-md-2 d-grid">
+    <a href="../crawl.py" class="btn btn-warning text-white"><i class="fa fa-plus"></i> Crawl món mới</a>
+  </div> -->
+</form>
+{% if keyword %}
+  <div class="alert alert-info">
+    🔍 Tìm thấy <strong>{{ mons|length }}</strong> kết quả cho từ khóa <strong>"{{ keyword }}"</strong>
+  </div>
+{% elif sort %}
+  <div class="alert alert-info">
+    📋 Đang hiển thị theo kiểu sắp xếp: <strong>
+      {% if sort == 'az' %}A → Z{% elif sort == 'za' %}Z → A{% else %}Mới nhất{% endif %}
+    </strong>
+  </div>
+{% endif %}
+
+{% if mons|length == 0 %}
+  <div class="alert alert-warning text-center">Không tìm thấy món ăn phù hợp!</div>
+{% else %}
+<p class="text-muted">Tổng cộng: <strong>{{ total_results }}</strong> món ăn</p>
+  <ul class="list-group shadow-sm">
+    {% for mon in mons %}
+    <li class="list-group-item d-flex gap-3 align-items-start">
+      <img src="{{ mon.hinh_anh }}" class="rounded" style="width: 100px; height: 80px; object-fit: cover;">
+      <div class="flex-grow-1">
+        <h5>{{ mon.ten_mon }}</h5>
+        <a href="/chitiet/{{ mon.id }}" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <nav class="mt-4">
+    <ul class="pagination justify-content-center">
+      {% if page > 1 %}
+        <li class="page-item"><a class="page-link" href="?page={{ page - 1 }}&keyword={{ keyword }}&sort={{ sort }}">« Trước</a></li>
+      {% endif %}
+      {% for p in range(1, total_pages + 1) %}
+        <li class="page-item {% if p == page %}active{% endif %}">
+          <a class="page-link" href="?page={{ p }}&keyword={{ keyword }}&sort={{ sort }}">{{ p }}</a>
+        </li>
+      {% endfor %}
+      {% if page < total_pages %}
+        <li class="page-item"><a class="page-link" href="?page={{ page + 1 }}&keyword={{ keyword }}&sort={{ sort }}">Sau »</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}
+
+<!-- <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    showModal("🔍 Tìm kiếm món ăn theo từ khóa hoặc sắp xếp!");
+  });
+</script> -->
+
+{% endblock %}

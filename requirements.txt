@@ -1,0 +1,7 @@
+# Các thư viện được sử dụng
+
+flask
+flask_sqlalchemy
+pymysql
+requests
+beautifulsoup4
