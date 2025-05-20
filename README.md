@@ -23,7 +23,7 @@ Hệ thống sử dụng MySQL với 2 bảng chính:
 
 ## 🛠️ Công nghệ sử dụng
 
-- Backend: **Python **
+- Backend: **Python**
 - Cơ sở dữ liệu: **MySQL (XAMPP)**
 - Frontend: **HTML**, **CSS**, **Bootstrap**
 - Tìm kiếm: **SQL LIKE**
